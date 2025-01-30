@@ -1,35 +1,77 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Simple barcode scan result web page</title>
+    <title>Barcode Scanner Form</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="cache-control" content="max-age=0" />
     <meta http-equiv="cache-control" content="no-cache" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
+    <h1>Barcode Scanner Form</h1>
     <form id="barcodeForm">
-        <div>
-            <table>
-                <tr><td><strong>Scan to Web Sample</strong></td></tr>
-                <tr><td><input name="txt1" type="text" id="txt1" autofocus /></td></tr>
-                <tr><td><input type="submit" name="btnSubmit" value="Submit" id="btnSubmit" /></td></tr>
-            </table>
-        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><label for="barcode">Barcode:</label></td>
+                    <td><input type="text" id="barcode" name="barcode" autofocus /></td>
+                </tr>
+                <tr>
+                    <td><label for="quantity">Quantity:</label></td>
+                    <td><input type="text" id="quantity" name="quantity" /></td>
+                </tr>
+                <tr>
+                    <td><label for="location">Location:</label></td>
+                    <td><input type="text" id="location" name="location" /></td>
+                </tr>
+                <tr>
+                    <td><label for="notes">Notes:</label></td>
+                    <td><input type="text" id="notes" name="notes" /></td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="submit" value="Submit" />
     </form>
 
-    <script>
-        document.getElementById('barcodeForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent the default form submission
-
-            // Get the barcode value
-            const barcode = document.getElementById('txt1').value;
-
-            // Process the barcode (e.g., display it or send it to a third-party service)
-            alert(`Barcode submitted: ${barcode}`);
-
-            // Optionally, clear the input field
-            document.getElementById('txt1').value = '';
-        });
-    </script>
-</body>
-</html>
+    <div id="result"></div> <!-- Placeholder to display the result -->
